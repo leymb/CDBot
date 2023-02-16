@@ -63,7 +63,7 @@ int main()
 						std::string t_Description = t_ConfluenceBaseURL;
 						t_Description.append(el.value().at("_links").at("webui"));
 
-						//TODO rework, using >< scuffed from the surrounding html tags is scuffed but works for now
+						//TODO rework, using >< from the surrounding html tags is scuffed but works for now
 						bool t_Decided = ContainsWord(t_BodyData, ">Decided<");
 						bool t_InProgress = ContainsWord(t_BodyData, ">In progress<");
 
