@@ -82,6 +82,8 @@ inline json GetContentByURL(const char* a_URL, const std::string& a_ConfluenceAu
 	json data = json::parse(t_Result);
 	curl_global_cleanup();
 
+	delete t_Headers;
+
 	return data;
 }
 

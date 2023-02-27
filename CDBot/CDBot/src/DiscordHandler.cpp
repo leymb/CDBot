@@ -16,11 +16,14 @@ DiscordHandler::DiscordHandler(const char* a_Webhook) : m_Webhook(a_Webhook), m_
 DiscordHandler::~DiscordHandler()
 {
 	curl_easy_cleanup(m_CurlInstance);
+	curl_global_cleanup();
+
+	delete m_HTTPHeader;
 }
 
 CURLcode DiscordHandler::Send(const char* a_Payload) const
 {
-	std::string json_payload = std::string(a_Payload);
+	const std::string json_payload = std::string(a_Payload);
 
 	curl_easy_setopt(m_CurlInstance, CURLOPT_POSTFIELDS, json_payload.c_str());
 
