@@ -89,7 +89,15 @@ inline json GetContentByURL(const char* a_URL, const std::string& a_ConfluenceAu
 
 inline bool ContainsWord(std::string& a_String, const char* a_Word)
 {
-	std::regex rgx(a_Word);
+	const std::regex rgx(a_Word, std::regex_constants::icase);
+	std::smatch t_Match;
+
+	return std::regex_search(a_String, t_Match, rgx);
+}
+
+inline bool ContainsWordCaseSensitive(std::string& a_String, const char* a_Word)
+{
+	const std::regex rgx(a_Word);
 	std::smatch t_Match;
 
 	return std::regex_search(a_String, t_Match, rgx);
